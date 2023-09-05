@@ -7,7 +7,7 @@ interface ListButtonProps {
     onDeleteCallback: (index: number) => void;
 }
 
-const ListButton: FC<ListButtonProps> = ({ listName, index, onOpenCallback, onDeleteCallback }) => {
+const ListOverviewButton: FC<ListButtonProps> = ({ listName, index, onOpenCallback, onDeleteCallback }) => {
     return (
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <button style={{ width: '80%' }} onClick={() => onOpenCallback(index)}>{listName}</button>
@@ -16,4 +16,4 @@ const ListButton: FC<ListButtonProps> = ({ listName, index, onOpenCallback, onDe
     );
 }
 
-export default ListButton;
+export default ListOverviewButton;

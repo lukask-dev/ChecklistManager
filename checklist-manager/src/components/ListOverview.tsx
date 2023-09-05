@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import '../App.css';
-import ListButton from './ListButton';
+import ListOverviewButton from './ListOverviewButton';
 
-const ListOverview: React.FC = () => {
-    const [listNames, setListNames] = useState<string[]>([]);
+interface ListOverviewProps {
+    listNames: string[];
+    setListNames: React.Dispatch<React.SetStateAction<string[]>>;
+    setParamInNavigation: (paramName: string, paramValue: string) => void;
+}
+
+const ListOverview: FC<ListOverviewProps> = ({ listNames, setListNames, setParamInNavigation }) => {
+
     const [newListName, setNewListName] = useState<string>('');
-
-    // read list names
-    useEffect(() => {
-        const readListNames = localStorage.getItem('listNames');
-        if (readListNames) {
-            const parsedArray = JSON.parse(readListNames);
-            if (Array.isArray(parsedArray) && parsedArray.length > 0) {
-                setListNames(parsedArray);
-            }
-        }
-    }, []);
-
-    // save list names
-    useEffect(() => {
-        const value = JSON.stringify(listNames);
-        if (value) {
-            localStorage.setItem('listNames', value);
-        }
-    }, [listNames]);
 
     const addList = () => {
         if (newListName.trim() !== '') {
@@ -33,27 +20,26 @@ const ListOverview: React.FC = () => {
     };
 
     const deleteList = (index: number) => {
-        setListNames((prevTasks) => {
-            const updatedTasks = prevTasks.filter((_, i) => i !== index);
-            return updatedTasks;
+        setListNames((prevList) => {
+            const updatedList = prevList.filter((_, i) => i !== index);
+            return updatedList;
         });
     };
 
     const openList = (index: number) => {
-        console.log('Open!');
+        setParamInNavigation('list', index.toString());
     };
 
     return (
         <div>
             {listNames.map((listName, index) => (
-                <ListButton listName={listName} index={index} onOpenCallback={openList} onDeleteCallback={deleteList} key={index} />
+                <ListOverviewButton listName={listName} index={index} onOpenCallback={openList} onDeleteCallback={deleteList} key={index} />
             ))}
             <input
                 type="text"
                 placeholder="New list name"
                 value={newListName}
-                onChange={(e) => setNewListName(e.target.value)}
-            />
+                onChange={(e) => setNewListName(e.target.value)} />
             <button onClick={addList}>Add</button>
         </div>
     );

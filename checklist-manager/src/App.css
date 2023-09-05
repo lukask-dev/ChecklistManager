@@ -7,13 +7,19 @@
   align-items: center;
   /* justify-content: center; */
   font-size: calc(10px + 2vmin);
-  color: white;  
+  color: white;
 }
 
-.App-link {
+.AppContent-link {
   color: #61dafb;
 }
 
 .AppContent {
-  margin-top: 10vh;
+  margin-top: 4vh;
+  width: 15em;
+}
+
+.AppTitle {
+  text-decoration: none;
+  color: white;
 }
