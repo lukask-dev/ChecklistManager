@@ -13,7 +13,10 @@ const ListOverviewButton: FC<ListButtonProps> = ({ listName, index, onOpenCallba
     return (
         <div className='ListItemRow'>
             <button className='ListItemClickable' onClick={() => onOpenCallback(index)}>
-                <span className='ListItemContent'>{listName}</span>
+                <span className='ListItemContent'>
+                    <FontAwesomeIcon icon={icon({ name: 'list-ul' })} size='xl' />{' '}
+                    {listName}
+                </span>
             </button>
             <button className='ListItemDeleteButton' onClick={() => onDeleteCallback(index)}>
                 <FontAwesomeIcon icon={icon({ name: 'xmark' })} />

@@ -23,9 +23,12 @@ const TodoListTask: FC<TodoListTaskProps> = ({ data, index, onClickedCallback, o
     return (
         <div className='ListItemRow'>
             <button className={isCompleted ? 'ListItemClickable CompletedTask' : 'ListItemClickable NotCompletedTask'} onClick={() => onTaskClicked()}>
-                <span className='ListItemContent'>{data.name}</span>
+                <span className='ListItemContent'>
+                    <FontAwesomeIcon icon={icon({ name: 'circle' })} size='2xs' />{'  '}
+                    {data.name}
+                </span>
                 {isCompleted && (
-                    <span className='ListItemCheckmark'><FontAwesomeIcon icon={icon({ name: 'check' })} style={{ marginRight: '.3rem' }} size="2x" /></span>
+                    <span className='ListItemCheckmark'><FontAwesomeIcon icon={icon({ name: 'check' })} style={{ marginRight: '.3rem' }} size='2x' /></span>
                 )}
             </button>
             <button className='ListItemDeleteButton' onClick={() => onDeleteCallback(index)}>

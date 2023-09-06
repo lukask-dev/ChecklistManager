@@ -11,7 +11,7 @@
 }
 
 .AppContent-link {
-  color: #61dafb;
+  color: #000000;
 }
 
 .AppContent {
@@ -42,7 +42,7 @@
 }
 
 .ListItemContent {
-  margin-left: 1rem;
+  margin-left: .7rem;
   font-weight: 600;
 }
 

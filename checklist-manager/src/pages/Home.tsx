@@ -53,7 +53,7 @@ const Home = () => {
         <div className="App">
 
             <header>
-                <Link to="/" className='AppTitle'>
+                <Link to="/ChecklistManager" className='AppTitle'>
                     <h1>Checklist Manager</h1>
                 </Link>
             </header>
