@@ -1,6 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import '../App.css';
 import ListOverviewButton from './ListOverviewButton';
+import ItemAdder from './ItemAdder';
 
 interface ListOverviewProps {
     listNames: string[];
@@ -10,13 +11,8 @@ interface ListOverviewProps {
 
 const ListOverview: FC<ListOverviewProps> = ({ listNames, setListNames, setParamInNavigation }) => {
 
-    const [newListName, setNewListName] = useState<string>('');
-
-    const addList = () => {
-        if (newListName.trim() !== '') {
-            setListNames([...listNames, newListName]);
-            setNewListName('');
-        }
+    const addList = (newListName: string) => {
+        setListNames([...listNames, newListName]);
     };
 
     const deleteList = (index: number) => {
@@ -30,17 +26,20 @@ const ListOverview: FC<ListOverviewProps> = ({ listNames, setListNames, setParam
         setParamInNavigation('list', index.toString());
     };
 
+    const clearLocalStorage = () => {
+        if (window.confirm('Delete all lists?')) {
+            localStorage.clear();
+            window.location.reload();
+        }
+    };
+
     return (
-        <div>
+        <div>            
             {listNames.map((listName, index) => (
                 <ListOverviewButton listName={listName} index={index} onOpenCallback={openList} onDeleteCallback={deleteList} key={index} />
             ))}
-            <input
-                type="text"
-                placeholder="New list name"
-                value={newListName}
-                onChange={(e) => setNewListName(e.target.value)} />
-            <button onClick={addList}>Add</button>
+            <ItemAdder placeholderText='New List Name' onAddItemCallback={addList} />
+            <button className='ClearLocalStorageButton' onClick={clearLocalStorage}>Delete All</button>
         </div>
     );
 }

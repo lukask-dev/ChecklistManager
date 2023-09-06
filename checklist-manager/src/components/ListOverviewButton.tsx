@@ -1,4 +1,6 @@
 import React, { FC } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 interface ListButtonProps {
     listName: string;
@@ -9,9 +11,13 @@ interface ListButtonProps {
 
 const ListOverviewButton: FC<ListButtonProps> = ({ listName, index, onOpenCallback, onDeleteCallback }) => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <button style={{ width: '80%' }} onClick={() => onOpenCallback(index)}>{listName}</button>
-            <button style={{ width: '20%' }} onClick={() => onDeleteCallback(index)}>x</button>
+        <div className='ListItemRow'>
+            <button className='ListItemClickable' onClick={() => onOpenCallback(index)}>
+                <span className='ListItemContent'>{listName}</span>
+            </button>
+            <button className='ListItemDeleteButton' onClick={() => onDeleteCallback(index)}>
+                <FontAwesomeIcon icon={icon({ name: 'xmark' })} />
+            </button>
         </div>
     );
 }

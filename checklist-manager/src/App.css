@@ -15,11 +15,104 @@
 }
 
 .AppContent {
-  margin-top: 4vh;
+  margin-top: 1em;
   width: 15em;
 }
 
 .AppTitle {
   text-decoration: none;
   color: white;
+}
+
+.ListItemRow {
+  display: flex;
+  justify-content: space-between;
+  height: 2.5rem;
+  margin-bottom: .2rem;
+}
+
+.ListItemClickable {
+  border: none;
+  text-align: left;
+  width: calc(100% - 2.7rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;  
+  border-radius: .6rem;
+}
+
+.ListItemContent {
+  margin-left: 1rem;
+  font-weight: 600;
+}
+
+.ListItemCheckmark {
+  text-align: right;
+}
+
+.ListItemDeleteButton {
+  border: none;
+  width: 2.5rem;
+  opacity: 15%;
+  border-radius: .6rem;
+}
+
+.ItemAdder {
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  height: 1.7rem;
+}
+
+.ItemAdderLeftSide {
+  border: none;
+  text-align: left;
+  width: calc(100% - 6rem);
+  border-radius: .3rem;
+}
+
+.ItemAdderRightSide {
+  border: none;
+  width: 5.5rem;
+  border-radius: .3rem;
+}
+
+.CompletedTask {
+  background-color: #2e982e;
+  transition: background-color 0.2s;
+}
+
+.CompletedTask:hover {
+  background-color: #44b844;
+}
+
+.NotCompletedTask {
+  background-color: #a4a4a4;
+  transition: background-color 0.2s;
+}
+
+.NotCompletedTask:hover {
+  background-color: #bfbfbf;
+}
+
+.ClearLocalStorageButton {
+  background: none;
+  border: none;
+  color: #40454d;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: .4em;
+  padding: 0;
+  margin-top: 5em;
+  outline: none;
+  transition: color 0.2s;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.ClearLocalStorageButton:hover {
+  color: #de6819;
 }
