@@ -8,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/ChecklistManager" element={<Home />} />
       </Routes>
     </Router>
   )
