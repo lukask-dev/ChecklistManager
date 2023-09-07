@@ -37,7 +37,7 @@
   width: calc(100% - 2.7rem);
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   border-radius: .6rem;
 }
 
@@ -53,8 +53,13 @@
 .ListItemDeleteButton {
   border: none;
   width: 2.5rem;
-  opacity: 15%;
+  background-color: #45484d;
   border-radius: .6rem;
+}
+
+.ListItemDeleteButton:hover {
+  background-color: #ae3b1e;
+  color: #000000;
 }
 
 .ItemAdder {
@@ -115,4 +120,66 @@
 
 .ClearLocalStorageButton:hover {
   color: #de6819;
+}
+
+h2 {
+  margin-bottom: .5rem;
+}
+
+.ProgressOptionsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+.ProgressOptionsBar {
+  flex: 0 0 76%;
+  height: 1.3rem;
+}
+
+.ProgressOptionsResetButton {
+  flex: 0 0 12%;
+  height: 1.3rem;
+  margin-left: 2%;
+  color: #000000;
+  font-size: .5em;
+  background-color: #45484d;
+  outline: none;
+  border: none;
+  transition: color 0.2s;
+  border-radius: 0.3125rem;
+}
+
+.ProgressOptionsResetButton:hover {
+  background-color: #7f9d14;
+}
+
+.ProgressContainer {
+  width: 100%;
+  background-color: #45484d;
+  height: 1.3rem;
+  border-radius: 0.3125rem;  
+  position: relative;
+}
+
+.ProgressBar {
+  width: 0;
+  height: 100%;
+  background-color: #2e982e;
+  border-radius: 0.3125rem;
+  transition: width 0.3s ease-in-out;
+  position: relative;
+}
+
+.ProgressLabel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #000000;
+  font-size: .5em;
+  font-weight: 600;
 }

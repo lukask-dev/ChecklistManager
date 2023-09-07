@@ -12,13 +12,13 @@ interface ListButtonProps {
 const ListOverviewButton: FC<ListButtonProps> = ({ listName, index, onOpenCallback, onDeleteCallback }) => {
     return (
         <div className='ListItemRow'>
-            <button className='ListItemClickable' onClick={() => onOpenCallback(index)}>
+            <button title='Open List' className='ListItemClickable' onClick={() => onOpenCallback(index)}>
                 <span className='ListItemContent'>
                     <FontAwesomeIcon icon={icon({ name: 'list-ul' })} size='xl' />{' '}
                     {listName}
                 </span>
             </button>
-            <button className='ListItemDeleteButton' onClick={() => onDeleteCallback(index)}>
+            <button title='Delete List' className='ListItemDeleteButton' onClick={() => onDeleteCallback(index)}>
                 <FontAwesomeIcon icon={icon({ name: 'xmark' })} />
             </button>
         </div>
