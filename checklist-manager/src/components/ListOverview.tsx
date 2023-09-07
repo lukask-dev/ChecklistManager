@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import '../App.css';
 import ListOverviewButton from './ListOverviewButton';
 import ItemAdder from './ItemAdder';
+import { generateLocalStorageKeyForList as getLocalStorageKeyForList } from '../utils/utils';
 
 interface ListOverviewProps {
     listNames: string[];
@@ -20,6 +21,7 @@ const ListOverview: FC<ListOverviewProps> = ({ listNames, setListNames, setParam
             const updatedList = prevList.filter((_, i) => i !== index);
             return updatedList;
         });
+        localStorage.removeItem(getLocalStorageKeyForList(index));
     };
 
     const openList = (index: number) => {

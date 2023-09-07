@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -22,6 +21,10 @@
 .AppTitle {
   text-decoration: none;
   color: white;
+}
+
+button {
+  color: #000;
 }
 
 .ListItemRow {
@@ -66,6 +69,7 @@
   margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 1.5rem;
   display: flex;
   justify-content: space-between;
   height: 1.7rem;

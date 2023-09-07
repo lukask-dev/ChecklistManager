@@ -3,6 +3,7 @@ import TodoListTask from './TodoListTask';
 import ItemAdder from './ItemAdder';
 import { TaskData } from '../interfaces/TaskData';
 import ProgressBar from './ProgressBar';
+import { generateLocalStorageKeyForList as getLocalStorageKeyForListContent } from '../utils/utils';
 
 interface TodoListViewProps {
     listIndex: number;
@@ -12,27 +13,26 @@ interface TodoListViewProps {
 
 const TodoListView: FC<TodoListViewProps> = ({ listIndex, listName }) => {
     const [tasks, setTasks] = useState<TaskData[]>([]);
-    const localStorageKeyForTasks = 'tasks' + listIndex.toString();
     const [progressPercentage, setProgressPercentage] = useState<number>(0);
 
     // read tasks
     useEffect(() => {
-        const readTasks = localStorage.getItem(localStorageKeyForTasks);
+        const readTasks = localStorage.getItem(getLocalStorageKeyForListContent(listIndex));
         if (readTasks) {
             const parsedArray = JSON.parse(readTasks);
             if (Array.isArray(parsedArray) && parsedArray.length > 0) {
                 setTasks(parsedArray);
             }
         }
-    }, [localStorageKeyForTasks]);
+    }, [listIndex]);
 
     // save tasks
     useEffect(() => {
         const value = JSON.stringify(tasks);
         if (value) {
-            localStorage.setItem(localStorageKeyForTasks, value);
+            localStorage.setItem(getLocalStorageKeyForListContent(listIndex), value);
         }
-    }, [tasks, localStorageKeyForTasks]);
+    }, [tasks, listIndex]);
 
     // update progress percentage
     useEffect(() => {
@@ -80,13 +80,15 @@ const TodoListView: FC<TodoListViewProps> = ({ listIndex, listName }) => {
     return (
         <div>
             <h2>{listName}</h2>
+
+            {tasks.length > 0 && (
             <div className='ProgressOptionsContainer'>
                 <div className='ProgressOptionsBar'><ProgressBar percentage={progressPercentage} label='Progress' /></div>
                 <button
                     title='Reset all tasks to not completed'
                     className='ProgressOptionsResetButton'
                     onClick={() => resetProgress()}>Reset</button>
-            </div>
+            </div>)}
 
             {tasks.map((taskData, index) => (
                 <TodoListTask data={taskData} index={index} onClickedCallback={setTaskCompletedState} onDeleteCallback={deleteTask} key={index} />
