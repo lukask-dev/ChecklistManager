@@ -1,4 +1,4 @@
-# ChecklistManager
+# Checklist Manager
 Simple checklist managing web app.
 
 Live version:
